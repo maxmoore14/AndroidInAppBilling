@@ -41,7 +41,7 @@ public class InAppBillingPlugin extends CordovaPlugin {
      * want to make it easy for an attacker to replace the public key with one
      * of their own and then fake messages from the server.
      */
-    private final String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkYbZ4R1GpZTO1GAA2FK6iC0QdXY56GT5oQtmsovDnPBALuSQ2Y02HVKh12E3r36GLzDjtyoJnNNq5UQf2jOblWxzwYHAsjl4nzhmkE7I66Twnn8G/ynqbVZxiotjSoT9L6B3RUI5vSy18ewLfxYgXq6gr46SsAa3N6urr2Wjbp5Z3rhv1LfzFcUrb2sAzy4T6QkDN9ybwYJt1X6ig58khduhh5KKjVIVGKlV51ewi9sCUGoex3F2sW/qll1mMKSXWe9qvkDKUug3dTdp2Acns/wbQVWcOGO6nwoFBR8VXPchIvHfoNmHb9eFWCW/cIlvzVipA3wOXCFPn0jwsUkq/QIDAQAB";
+    private final String base64EncodedPublicKey = "";
     
     // (arbitrary) request code for the purchase flow
     static final int RC_REQUEST = 10001;
@@ -131,8 +131,8 @@ public class InAppBillingPlugin extends CordovaPlugin {
 		Log.d(TAG, "init start");
 		// Some sanity checks to see if the developer (that's you!) really followed the
         // instructions to run this plugin
-	 	if (base64EncodedPublicKey.contains("CONSTRUCT_YOUR")) 
-	 		throw new RuntimeException("Please put your app's public key in InAppBillingPlugin.java. See ReadMe.");
+	 	//if (base64EncodedPublicKey.contains("CONSTRUCT_YOUR")) 
+	 	//	throw new RuntimeException("Please put your app's public key in InAppBillingPlugin.java. See ReadMe.");
 	 	
 	 	// Create the helper, passing it our context and the public key to verify signatures with
         Log.d(TAG, "Creating IAB helper.");

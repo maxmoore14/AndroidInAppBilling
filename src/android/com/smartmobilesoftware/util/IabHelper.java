@@ -475,14 +475,16 @@ public class IabHelper {
                 purchase = new Purchase(mPurchasingItemType, purchaseData, dataSignature);
                 String sku = purchase.getSku();
 
-                // Verify signature
-                if (!Security.verifyPurchase(mSignatureBase64, purchaseData, dataSignature)) {
-                    logError("Purchase signature verification FAILED for sku " + sku);
-                    result = new IabResult(IABHELPER_VERIFICATION_FAILED, "Signature verification failed for sku " + sku);
-                    if (mPurchaseListener != null) mPurchaseListener.onIabPurchaseFinished(result, purchase);
-                    return true;
-                }
-                logDebug("Purchase signature successfully verified.");
+				if (!TextUtils.isEmpty(mSignatureBase64)) {
+	                // Verify signature
+					if (!Security.verifyPurchase(mSignatureBase64, purchaseData, dataSignature)) {
+						logError("Purchase signature verification FAILED for sku " + sku);
+						result = new IabResult(IABHELPER_VERIFICATION_FAILED, "Signature verification failed for sku " + sku);
+						if (mPurchaseListener != null) mPurchaseListener.onIabPurchaseFinished(result, purchase);
+						return true;
+					}
+					logDebug("Purchase signature successfully verified.");
+				}
             }
             catch (JSONException e) {
                 logError("Failed to parse purchase data.");
@@ -866,7 +868,8 @@ public class IabHelper {
                 String purchaseData = purchaseDataList.get(i);
                 String signature = signatureList.get(i);
                 String sku = ownedSkus.get(i);
-                if (Security.verifyPurchase(mSignatureBase64, purchaseData, signature)) {
+                if (TextUtils.isEmpty(mSignatureBase64)
+						|| Security.verifyPurchase(mSignatureBase64, purchaseData, signature)) {
                     logDebug("Sku is owned: " + sku);
                     Purchase purchase = new Purchase(itemType, purchaseData, signature);
 
