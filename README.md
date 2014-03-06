@@ -5,6 +5,12 @@ In App Billing Documentation
 
 Please see that repo for full documentation.
 
+### USAGE
+
+With this version of the plugin and PhoneGap Build, you must do your own server-side validation as recommended by Google. Purchases are returned to javascript WITHOUT being verified. This allows you not to include and distribute your license key.
+
+
+
 
 If you find this plugin useful, please donate via Bitcoin to support it:
 17JK27E4vbzPrJbBAtvjUVN3LrFcATtRA1
