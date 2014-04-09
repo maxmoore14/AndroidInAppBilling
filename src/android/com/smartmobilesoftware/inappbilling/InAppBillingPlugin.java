@@ -380,7 +380,7 @@ public class InAppBillingPlugin extends CordovaPlugin {
 			//jsonPurchase.put("purchaseData", purchase.getOriginalJson());
 			//jsonPurchase.put("signature", purchase.getSignature());
 			String origJson = purchase.getOriginalJson();
-			jsonPurchase.put("purchaseData", origJson);
+            jsonPurchase.put("purchaseData", origJson);
 			String sig = purchase.getSignature();
 			jsonPurchase.put("signature", sig);
             callbackContext.success(jsonPurchase);
