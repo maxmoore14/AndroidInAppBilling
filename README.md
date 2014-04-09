@@ -9,6 +9,8 @@ Please see that repo for full documentation.
 
 With this version of the plugin and PhoneGap Build, you must do your own server-side validation as recommended by Google. Purchases are returned to javascript WITHOUT being verified. This allows you NOT to include and distribute your license key.
 
+Returned data now includes the raw JSON data and the signature.
+
 
 
 
