@@ -371,14 +371,14 @@ public class InAppBillingPlugin extends CordovaPlugin {
 
             Log.d(TAG, "Purchase successful.");
             
-            // add the purchase to the inventory
-            myInventory.addPurchase(purchase);
             //callbackContext.success(purchase.getSku());
 			// original plugin just returned the sku
 			// now returns the original json data & signature
 			JSONObject jsonPurchase = new JSONObject();
 			jsonPurchase.put("purchaseData", purchase.getOriginalJson());
 			jsonPurchase.put("signature", purchase.getSignature());
+            // add the purchase to the inventory
+            myInventory.addPurchase(purchase);
             callbackContext.success(jsonPurchase.toString());
 
         }
