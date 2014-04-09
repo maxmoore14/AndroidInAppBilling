@@ -376,13 +376,14 @@ public class InAppBillingPlugin extends CordovaPlugin {
             //callbackContext.success(purchase.getSku());
 			// original plugin just returned the sku
 			// now returns the original json data & signature
-			//JSONObject jsonPurchase = new JSONObject();
-			//jsonPurchase.put("purchaseData", purchase.getOriginalJson());
-			//jsonPurchase.put("signature", purchase.getSignature());
-            //callbackContext.success(jsonPurchase.toString());
-			JSONObject purchaseData = new JSONObject(purchase.getOriginalJson());
-			JSONObject signature = new JSONObject(purchase.getSignature());
-			callbackContext.success(new JSONObject().put("purchaseData", purchaseData).put("signature", signature));
+			JSONObject jsonPurchase = new JSONObject();
+			try{
+				jsonPurchase.put("purchaseData", purchase.getOriginalJson());
+				jsonPurchase.put("signature", purchase.getSignature());
+			}catch (JSONException e){
+				callbackContext.error(e.getMessage());
+			}
+            callbackContext.success(jsonPurchase);
 
         }
     };
